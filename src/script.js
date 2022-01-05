@@ -30,14 +30,14 @@ const attackPlayer = function(health) {
 which has a console.log method to state the following message: “player health: health”.*/
 
 const logHealth = (player, health) => {
-    console.log("player health:" + health); 
+    console.log(player + " health: " + health); 
 }
 
 /*Declare an arrow function named logDeath that has two parameters named winner and loser 
 which has a console.log method to state the following message: “winner defeated loser”*/
 
 const logDeath = (winner, loser) => {
-    console.log(winner + "defeated" + loser);
+    console.log(winner + " defeated " + loser);
 }
 
 /* Declare an arrow function named isDead that has one parameter named health 
@@ -50,19 +50,23 @@ const isDead = (health) => {
 function fight(player1, player2, player1Health, player2Health) {
     //write a while loop that loops while true
     while(true){
-        chooseOption(player1, player2);
+        let attacker = chooseOption(player1, player2);
+        if(attacker === player1){
         player2Health = attackPlayer(player2Health);
         logHealth(player2, player2Health);
-        if (isDead(player2Health) = true){
+        if (isDead(player2Health) === true){
             logDeath(player1, player2);
-            break
+            break;
         }
+        }
+        else{
             player1Health = attackPlayer(player1Health);
             logHealth(player1, player1Health);
-            if (isDead(player1Health) = true){
+            if (isDead(player1Health) === true){
                 logDeath(player2, player1);
+                break;
             }
-            break
+            }
         }
     
     /*if attacker is player1--> 
@@ -84,4 +88,4 @@ function fight(player1, player2, player1Health, player2Health) {
 
 //call the fight function with the required four parameters. You pick the names and starting health. 
 
-console.log(fight(Amanda, Gabby, 100, 100));
+console.log(fight("Amanda", "Gabby", 100, 100));
