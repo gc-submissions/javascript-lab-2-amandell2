@@ -7,7 +7,6 @@
 const randomDamage = () => {
     return Math.floor(Math.random() * 10) + 1;
 }
-console.log(randomDamage());
 
 /*Declare an arrow function named chooseOption that has two parameters named opt1 and opt2. 
 chooseOption does two things: 
@@ -17,7 +16,6 @@ chooseOption does two things:
 
 const chooseOption = (opt1, opt2) => {
     let randNum = Math.floor(Math.random() * 2);
-    console.log(randNum);
     return (randNum === 0 ? opt1 : opt2);
     }
 
@@ -25,7 +23,8 @@ const chooseOption = (opt1, opt2) => {
 which returns a number equal to health minus the result of the randomDamage function.*/
 
 const attackPlayer = function(health) {
-    return (health - randomDamage);
+    
+    return (health - randomDamage());
 }
 /*Declare an arrow function named logHealth that has two parameters named player and health 
 which has a console.log method to state the following message: “player health: health”.*/
@@ -50,23 +49,21 @@ const isDead = (health) => {
 
 function fight(player1, player2, player1Health, player2Health) {
     //write a while loop that loops while true
-    let attacker = chooseOption(player1, player2);
-    while(attacker === player1){
-        let player2Health = attackPlayer(player2Health);
+    while(true){
+        chooseOption(player1, player2);
+        player2Health = attackPlayer(player2Health);
         logHealth(player2, player2Health);
-        if (isDead(player2Health)=true){
+        if (isDead(player2Health) = true){
             logDeath(player1, player2);
             break
         }
-        else{
             player1Health = attackPlayer(player1Health);
             logHealth(player1, player1Health);
-            if (isDead(player1Health)=true){
+            if (isDead(player1Health) = true){
                 logDeath(player2, player1);
             }
             break
         }
-    }
     
     /*if attacker is player1--> 
     Set player2Health equal to the result of attackPlayer with player2Health as its argument.
